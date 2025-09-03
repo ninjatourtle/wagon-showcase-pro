@@ -63,7 +63,7 @@ export default function Footer() {
               Контакты
             </h4>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li>+7 (495) 123-45-67</li>
+              <li>+7 (495) 157-83-02</li>
               <li>info@vagontrade.ru</li>
               <li>г. Москва, ул. Промышленная, 15</li>
             </ul>

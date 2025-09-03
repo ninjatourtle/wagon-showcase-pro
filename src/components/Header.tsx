@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +18,11 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Главная", href: "#" },
-    { name: "Каталог", href: "#catalog" },
-    { name: "О компании", href: "#about" },
-    { name: "Услуги", href: "#services" },
-    { name: "Контакты", href: "#contact" }
+    { name: "Главная", href: "/" },
+    { name: "Каталог", href: "/catalog" },
+    { name: "О компании", href: "/about" },
+    { name: "Услуги", href: "/services" },
+    { name: "Контакты", href: "/#contact" }
   ];
 
   return (
@@ -34,26 +36,40 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <h1 className={`text-2xl font-bold transition-colors ${
               isScrolled ? "text-primary" : "text-primary-foreground"
             }`}>
               ВагонТрейд
             </h1>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`font-medium transition-colors hover:text-accent ${
-                  isScrolled ? "text-foreground" : "text-primary-foreground"
-                }`}
-              >
-                {link.name}
-              </a>
+              link.href.includes('#') ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`font-medium transition-colors hover:text-accent ${
+                    isScrolled ? "text-foreground" : "text-primary-foreground"
+                  }`}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`font-medium transition-colors hover:text-accent ${
+                    location.pathname === link.href ? "text-accent" : ""
+                  } ${
+                    isScrolled ? "text-foreground" : "text-primary-foreground"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -64,7 +80,7 @@ export default function Header() {
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold"
             >
               <Phone className="mr-2 h-4 w-4" />
-              +7 (495) 123-45-67
+              +7 (495) 157-83-02
             </Button>
           </div>
 
@@ -84,14 +100,25 @@ export default function Header() {
           <div className="md:hidden bg-background border-t border-border">
             <nav className="flex flex-col py-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="px-4 py-3 text-foreground hover:bg-muted transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
+                link.href.includes('#') ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="px-4 py-3 text-foreground hover:bg-muted transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className="px-4 py-3 text-foreground hover:bg-muted transition-colors block"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               <div className="px-4 py-3">
                 <Button 
