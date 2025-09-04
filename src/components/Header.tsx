@@ -7,6 +7,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,13 +23,14 @@ export default function Header() {
     { name: "Каталог", href: "/catalog" },
     { name: "О компании", href: "/about" },
     { name: "Услуги", href: "/services" },
+    { name: "Тендеры", href: "/tenders" },
     { name: "Контакты", href: "/#contact" }
   ];
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
+        isScrolled || !isHomePage
           ? "bg-background/95 backdrop-blur-md shadow-soft" 
           : "bg-transparent"
       }`}
@@ -38,7 +40,7 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <h1 className={`text-2xl font-bold transition-colors ${
-              isScrolled ? "text-primary" : "text-primary-foreground"
+              isScrolled || !isHomePage ? "text-primary" : "text-primary-foreground"
             }`}>
               ВагонТрейд
             </h1>
@@ -52,7 +54,7 @@ export default function Header() {
                   key={link.name}
                   href={link.href}
                   className={`font-medium transition-colors hover:text-accent ${
-                    isScrolled ? "text-foreground" : "text-primary-foreground"
+                    isScrolled || !isHomePage ? "text-foreground" : "text-primary-foreground"
                   }`}
                 >
                   {link.name}
@@ -64,7 +66,7 @@ export default function Header() {
                   className={`font-medium transition-colors hover:text-accent ${
                     location.pathname === link.href ? "text-accent" : ""
                   } ${
-                    isScrolled ? "text-foreground" : "text-primary-foreground"
+                    isScrolled || !isHomePage ? "text-foreground" : "text-primary-foreground"
                   }`}
                 >
                   {link.name}
@@ -87,7 +89,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             className={`md:hidden p-2 transition-colors ${
-              isScrolled ? "text-foreground" : "text-primary-foreground"
+              isScrolled || !isHomePage ? "text-foreground" : "text-primary-foreground"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
