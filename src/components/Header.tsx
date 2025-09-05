@@ -24,7 +24,7 @@ export default function Header() {
     { name: "О компании", href: "/about" },
     { name: "Услуги", href: "/services" },
     { name: "Тендеры", href: "/tenders" },
-    { name: "Контакты", href: "/#contact" }
+    { name: "Контакты", href: "/contacts" }
   ];
 
   return (
