@@ -63,6 +63,16 @@ export default function WagonDetail() {
     setIsModalOpen(false);
     setFormData({ name: "", phone: "", email: "", message: "" });
   };
+  const getStatusBadge = (status: "available" | "reserved" | "sold") => {
+    switch (status) {
+      case "available":
+        return <Badge className="bg-green-500 text-white">В наличии</Badge>;
+      case "reserved":
+        return <Badge className="bg-yellow-500 text-white">Забронирован</Badge>;
+      case "sold":
+        return <Badge variant="secondary">Продан</Badge>;
+    }
+  };
 
   const wagon = {
     id: 1,
@@ -287,7 +297,7 @@ export default function WagonDetail() {
             {/* Info */}
             <div className="space-y-6">
               <div>
-                {getStatusBadge(wagon.status)}
+                {getStatusBadge(wagon.status as "available" | "reserved" | "sold")}
                 <h1 className="text-3xl font-bold text-foreground mb-2 mt-2">{wagon.name}</h1>
                 <p className="text-muted-foreground">{wagon.type} • {wagon.year} год</p>
               </div>
@@ -601,11 +611,11 @@ export default function WagonDetail() {
           <div className="mt-12">
             <h2 className="text-2xl font-bold mb-6">Похожие вагоны</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              {similarWagons.map((similar) => (
+              {wagon.similarWagons.map((similar) => (
                 <Card key={similar.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
                   <div className="aspect-video bg-muted">
                     <img 
-                      src={similar.images[0]} 
+                      src={similar.image} 
                       alt={similar.name}
                       className="w-full h-full object-cover"
                     />
@@ -621,7 +631,7 @@ export default function WagonDetail() {
                     <Button 
                       variant="outline" 
                       className="w-full"
-                      onClick={() => navigate(`/wagon/${similar.id}`)}
+                      onClick={() => (window.location.href = `/wagon/${similar.id}`)}
                     >
                       Подробнее
                     </Button>
