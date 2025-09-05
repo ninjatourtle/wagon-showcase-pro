@@ -7,6 +7,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { Truck, Calendar, Package, Shield, CheckCircle } from "lucide-react";
 import { useState } from "react";
+import gondolaWagon from "@/assets/gondola-wagon.jpg";
+import boxcarWagon from "@/assets/boxcar-wagon.jpg";
+import tankWagon from "@/assets/tank-wagon.jpg";
+import platformWagon from "@/assets/platform-wagon.jpg";
+import hopperWagon from "@/assets/hopper-wagon.jpg";
+import refrigeratorWagon from "@/assets/refrigerator-wagon.jpg";
+import gondolaRestored from "@/assets/gondola-restored.jpg";
+import bitumenTank from "@/assets/bitumen-tank.jpg";
 type Wagon = {
   id: number;
   name: string;
@@ -27,7 +35,7 @@ const wagons: Wagon[] = [{
   price: "3 500 000 ₽",
   status: "available",
   features: ["Усиленная конструкция", "Антикоррозийная обработка", "Гарантия 5 лет"],
-  image: "/gondola-wagon.jpg"
+  image: gondolaWagon
 }, {
   id: 2,
   name: "Крытый вагон 11-280",
@@ -37,7 +45,7 @@ const wagons: Wagon[] = [{
   price: "3 200 000 ₽",
   status: "available",
   features: ["Вентиляционная система", "Защита от влаги", "Погрузочные люки"],
-  image: "/boxcar-wagon.jpg"
+  image: boxcarWagon
 }, {
   id: 3,
   name: "Цистерна 15-871",
@@ -47,7 +55,7 @@ const wagons: Wagon[] = [{
   price: "4 800 000 ₽",
   status: "available",
   features: ["Нержавеющая сталь", "Система подогрева", "Клапаны безопасности"],
-  image: "/tank-wagon.jpg"
+  image: tankWagon
 }, {
   id: 4,
   name: "Платформа 13-401",
@@ -57,7 +65,7 @@ const wagons: Wagon[] = [{
   price: "2 900 000 ₽",
   status: "reserved",
   features: ["Универсальное крепление", "Усиленная рама", "Контейнерные фитинги"],
-  image: "/gondola-wagon.jpg"
+  image: platformWagon
 }, {
   id: 5,
   name: "Хоппер-дозатор 19-923",
@@ -67,7 +75,7 @@ const wagons: Wagon[] = [{
   price: "3 700 000 ₽",
   status: "available",
   features: ["Автоматическая разгрузка", "Защита от пыли", "Усиленные люки"],
-  image: "/tank-wagon.jpg"
+  image: hopperWagon
 }, {
   id: 6,
   name: "Рефрижератор ZB-5",
@@ -77,7 +85,7 @@ const wagons: Wagon[] = [{
   price: "6 200 000 ₽",
   status: "available",
   features: ["Температурный режим -25°C до +15°C", "Автономная работа", "GPS мониторинг"],
-  image: "/boxcar-wagon.jpg"
+  image: refrigeratorWagon
 }, {
   id: 7,
   name: "Полувагон 12-196",
@@ -87,7 +95,7 @@ const wagons: Wagon[] = [{
   price: "2 800 000 ₽",
   status: "sold",
   features: ["Капитальный ремонт 2023", "Новые тележки", "Гарантия 3 года"],
-  image: "/gondola-wagon.jpg"
+  image: gondolaRestored
 }, {
   id: 8,
   name: "Цистерна для битума 15-1547",
@@ -97,7 +105,7 @@ const wagons: Wagon[] = [{
   price: "5 100 000 ₽",
   status: "available",
   features: ["Паровая рубашка", "Теплоизоляция", "Специальное покрытие"],
-  image: "/tank-wagon.jpg"
+  image: bitumenTank
 }];
 export default function Catalog() {
   const [typeFilter, setTypeFilter] = useState<string>("all");
