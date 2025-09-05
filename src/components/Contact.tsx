@@ -2,10 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-
 export default function Contact() {
-  return (
-    <section className="py-20 bg-muted">
+  return <section className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">
@@ -24,29 +22,12 @@ export default function Contact() {
             </h3>
             <form className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input 
-                  placeholder="Ваше имя" 
-                  className="bg-background"
-                />
-                <Input 
-                  placeholder="Телефон" 
-                  type="tel"
-                  className="bg-background"
-                />
+                <Input placeholder="Ваше имя" className="bg-background" />
+                <Input placeholder="Телефон" type="tel" className="bg-background" />
               </div>
-              <Input 
-                placeholder="Email" 
-                type="email"
-                className="bg-background"
-              />
-              <Textarea 
-                placeholder="Сообщение" 
-                className="min-h-[120px] bg-background"
-              />
-              <Button 
-                size="lg" 
-                className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold"
-              >
+              <Input placeholder="Email" type="email" className="bg-background" />
+              <Textarea placeholder="Сообщение" className="min-h-[120px] bg-background" />
+              <Button size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold">
                 Отправить заявку
               </Button>
             </form>
@@ -66,7 +47,7 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Телефон</p>
                   <p className="text-muted-foreground">+7 (495) 157-83-02</p>
-                  <p className="text-muted-foreground">+7 (800) 555-35-35</p>
+                  
                 </div>
               </div>
 
@@ -77,7 +58,7 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Email</p>
                   <p className="text-muted-foreground">info@kbslogistic.ru</p>
-                  <p className="text-muted-foreground">sales@kbslogistic.ru</p>
+                  
                 </div>
               </div>
 
@@ -87,8 +68,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">Адрес</p>
-                  <p className="text-muted-foreground">г. Москва, ул. Промышленная, д. 15</p>
-                  <p className="text-muted-foreground">Бизнес-центр "Транспорт"</p>
+                  <p className="text-muted-foreground">г. Москва, Дубининская ул., д. 57, стр. 2, помещ. 12Т</p>
+                  
                 </div>
               </div>
 
@@ -106,6 +87,5 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
