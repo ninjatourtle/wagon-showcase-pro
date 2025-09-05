@@ -117,29 +117,6 @@ export default function Tenders() {
             </p>
           </div>
 
-          {/* Procurement Head Contact */}
-          <Card className="mb-12 p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-32 h-32 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground text-4xl font-bold">
-                АК
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Александр Константинов</h3>
-                <p className="text-lg text-muted-foreground mb-4">Начальник отдела внутренних закупок</p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                  <a href="tel:+74951578302" className="flex items-center text-primary hover:text-primary/80 transition-colors">
-                    <Phone className="h-5 w-5 mr-2" />
-                    +7 (495) 157-83-02, доб. 2771
-                  </a>
-                  <a href="mailto:procurement@kbslogistic.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
-                    <Mail className="h-5 w-5 mr-2" />
-                    procurement@kbslogistic.ru
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Card>
-
           {/* Info Section */}
           <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-primary-foreground mb-12">
             <div className="max-w-4xl mx-auto text-center">
@@ -181,6 +158,29 @@ export default function Tenders() {
               ))}
             </div>
           </div>
+
+          {/* Procurement Head Contact */}
+          <Card className="mb-16 p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-32 h-32 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground text-4xl font-bold">
+                АК
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-2xl font-bold text-foreground mb-2">Александр Константинов</h3>
+                <p className="text-lg text-muted-foreground mb-4">Начальник отдела внутренних закупок</p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  <a href="tel:+74951578302" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Phone className="h-5 w-5 mr-2" />
+                    +7 (495) 157-83-02, доб. 2771
+                  </a>
+                  <a href="mailto:procurement@kbslogistic.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Mail className="h-5 w-5 mr-2" />
+                    procurement@kbslogistic.ru
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Card>
 
           {/* Requirements Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
