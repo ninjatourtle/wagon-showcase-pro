@@ -287,8 +287,8 @@ export default function WagonDetail() {
             {/* Info */}
             <div className="space-y-6">
               <div>
-                <Badge className="mb-2 bg-green-500 text-white">В наличии</Badge>
-                <h1 className="text-3xl font-bold text-foreground mb-2">{wagon.name}</h1>
+                {getStatusBadge(wagon.status)}
+                <h1 className="text-3xl font-bold text-foreground mb-2 mt-2">{wagon.name}</h1>
                 <p className="text-muted-foreground">{wagon.type} • {wagon.year} год</p>
               </div>
 
@@ -326,10 +326,11 @@ export default function WagonDetail() {
                   size="lg" 
                   className="flex-1"
                   onClick={() => setIsModalOpen(true)}
+                  disabled={wagon.status === "sold"}
                 >
-                  Заказать вагон
+                  {wagon.status === "sold" ? "Продан" : wagon.status === "reserved" ? "Забронировать очередь" : "Заказать вагон"}
                 </Button>
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" disabled={wagon.status === "sold"}>
                   <Phone className="h-4 w-4 mr-2" />
                   Позвонить
                 </Button>
@@ -600,11 +601,11 @@ export default function WagonDetail() {
           <div className="mt-12">
             <h2 className="text-2xl font-bold mb-6">Похожие вагоны</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              {wagon.similarWagons.map((similar) => (
+              {similarWagons.map((similar) => (
                 <Card key={similar.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
                   <div className="aspect-video bg-muted">
                     <img 
-                      src={similar.image} 
+                      src={similar.images[0]} 
                       alt={similar.name}
                       className="w-full h-full object-cover"
                     />
@@ -617,7 +618,11 @@ export default function WagonDetail() {
                     <p className="text-xl font-bold text-primary">{similar.price}</p>
                   </CardContent>
                   <CardFooter className="p-4 pt-0">
-                    <Button variant="outline" className="w-full">
+                    <Button 
+                      variant="outline" 
+                      className="w-full"
+                      onClick={() => navigate(`/wagon/${similar.id}`)}
+                    >
                       Подробнее
                     </Button>
                   </CardFooter>
