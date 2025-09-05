@@ -3,6 +3,10 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Users, Shield, Clock, TrendingUp, Globe, Truck, Settings } from "lucide-react";
+import teamPetrov from "@/assets/team-petrov.jpg";
+import teamIvanova from "@/assets/team-ivanova.jpg";
+import teamKozlov from "@/assets/team-kozlov.jpg";
+import teamSmirnova from "@/assets/team-smirnova.jpg";
 
 export default function About() {
   const achievements = [
@@ -41,22 +45,26 @@ export default function About() {
     {
       name: "Александр Петров",
       position: "Генеральный директор",
-      experience: "20 лет в отрасли"
+      experience: "20 лет в отрасли",
+      photo: teamPetrov
     },
     {
       name: "Мария Иванова",
       position: "Коммерческий директор",
-      experience: "15 лет в логистике"
+      experience: "15 лет в логистике",
+      photo: teamIvanova
     },
     {
       name: "Сергей Козлов",
       position: "Технический директор",
-      experience: "18 лет в железнодорожной отрасли"
+      experience: "18 лет в железнодорожной отрасли",
+      photo: teamKozlov
     },
     {
       name: "Елена Смирнова",
       position: "Финансовый директор",
-      experience: "12 лет в финансах"
+      experience: "12 лет в финансах",
+      photo: teamSmirnova
     }
   ];
 
@@ -194,7 +202,13 @@ export default function About() {
             {team.map((member, index) => (
               <Card key={index}>
                 <CardContent className="p-6 text-center">
-                  <div className="w-24 h-24 bg-gradient-primary rounded-full mx-auto mb-4"></div>
+                  <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden">
+                    <img 
+                      src={member.photo} 
+                      alt={member.name} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <h3 className="text-lg font-semibold text-foreground mb-1">
                     {member.name}
                   </h3>
