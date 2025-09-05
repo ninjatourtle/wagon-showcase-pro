@@ -225,7 +225,7 @@ export default function Catalog() {
           <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
             Свяжитесь с нами, и мы подберем оптимальное решение под ваши задачи
           </p>
-          <Button size="lg" variant="secondary">
+          <Button size="lg" variant="secondary" className="text-slate-50 bg-red-600 hover:bg-red-500">
             Получить консультацию
           </Button>
         </div>
