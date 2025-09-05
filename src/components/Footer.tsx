@@ -57,6 +57,11 @@ export default function Footer() {
                   Партнеры
                 </Link>
               </li>
+              <li>
+                <Link to="/news" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Новости
+                </Link>
+              </li>
             </ul>
           </div>
 
