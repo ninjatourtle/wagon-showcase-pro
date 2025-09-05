@@ -7,7 +7,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { Truck, Calendar, Package, Shield, CheckCircle } from "lucide-react";
 import { useState } from "react";
-
 type Wagon = {
   id: number;
   name: string;
@@ -19,111 +18,97 @@ type Wagon = {
   features: string[];
   image: string;
 };
-
-const wagons: Wagon[] = [
-  {
-    id: 1,
-    name: "Полувагон модель 12-132",
-    type: "Полувагон",
-    capacity: "69 тонн",
-    year: 2020,
-    price: "3 500 000 ₽",
-    status: "available",
-    features: ["Усиленная конструкция", "Антикоррозийная обработка", "Гарантия 5 лет"],
-    image: "/gondola-wagon.jpg"
-  },
-  {
-    id: 2,
-    name: "Крытый вагон 11-280",
-    type: "Крытый вагон",
-    capacity: "68 тонн",
-    year: 2019,
-    price: "3 200 000 ₽",
-    status: "available",
-    features: ["Вентиляционная система", "Защита от влаги", "Погрузочные люки"],
-    image: "/boxcar-wagon.jpg"
-  },
-  {
-    id: 3,
-    name: "Цистерна 15-871",
-    type: "Цистерна",
-    capacity: "66 тонн",
-    year: 2021,
-    price: "4 800 000 ₽",
-    status: "available",
-    features: ["Нержавеющая сталь", "Система подогрева", "Клапаны безопасности"],
-    image: "/tank-wagon.jpg"
-  },
-  {
-    id: 4,
-    name: "Платформа 13-401",
-    type: "Платформа",
-    capacity: "70 тонн",
-    year: 2022,
-    price: "2 900 000 ₽",
-    status: "reserved",
-    features: ["Универсальное крепление", "Усиленная рама", "Контейнерные фитинги"],
-    image: "/gondola-wagon.jpg"
-  },
-  {
-    id: 5,
-    name: "Хоппер-дозатор 19-923",
-    type: "Хоппер",
-    capacity: "71 тонна",
-    year: 2020,
-    price: "3 700 000 ₽",
-    status: "available",
-    features: ["Автоматическая разгрузка", "Защита от пыли", "Усиленные люки"],
-    image: "/tank-wagon.jpg"
-  },
-  {
-    id: 6,
-    name: "Рефрижератор ZB-5",
-    type: "Рефрижератор",
-    capacity: "40 тонн",
-    year: 2021,
-    price: "6 200 000 ₽",
-    status: "available",
-    features: ["Температурный режим -25°C до +15°C", "Автономная работа", "GPS мониторинг"],
-    image: "/boxcar-wagon.jpg"
-  },
-  {
-    id: 7,
-    name: "Полувагон 12-196",
-    type: "Полувагон",
-    capacity: "69 тонн",
-    year: 2018,
-    price: "2 800 000 ₽",
-    status: "sold",
-    features: ["Капитальный ремонт 2023", "Новые тележки", "Гарантия 3 года"],
-    image: "/gondola-wagon.jpg"
-  },
-  {
-    id: 8,
-    name: "Цистерна для битума 15-1547",
-    type: "Цистерна",
-    capacity: "60 тонн",
-    year: 2020,
-    price: "5 100 000 ₽",
-    status: "available",
-    features: ["Паровая рубашка", "Теплоизоляция", "Специальное покрытие"],
-    image: "/tank-wagon.jpg"
-  }
-];
-
+const wagons: Wagon[] = [{
+  id: 1,
+  name: "Полувагон модель 12-132",
+  type: "Полувагон",
+  capacity: "69 тонн",
+  year: 2020,
+  price: "3 500 000 ₽",
+  status: "available",
+  features: ["Усиленная конструкция", "Антикоррозийная обработка", "Гарантия 5 лет"],
+  image: "/gondola-wagon.jpg"
+}, {
+  id: 2,
+  name: "Крытый вагон 11-280",
+  type: "Крытый вагон",
+  capacity: "68 тонн",
+  year: 2019,
+  price: "3 200 000 ₽",
+  status: "available",
+  features: ["Вентиляционная система", "Защита от влаги", "Погрузочные люки"],
+  image: "/boxcar-wagon.jpg"
+}, {
+  id: 3,
+  name: "Цистерна 15-871",
+  type: "Цистерна",
+  capacity: "66 тонн",
+  year: 2021,
+  price: "4 800 000 ₽",
+  status: "available",
+  features: ["Нержавеющая сталь", "Система подогрева", "Клапаны безопасности"],
+  image: "/tank-wagon.jpg"
+}, {
+  id: 4,
+  name: "Платформа 13-401",
+  type: "Платформа",
+  capacity: "70 тонн",
+  year: 2022,
+  price: "2 900 000 ₽",
+  status: "reserved",
+  features: ["Универсальное крепление", "Усиленная рама", "Контейнерные фитинги"],
+  image: "/gondola-wagon.jpg"
+}, {
+  id: 5,
+  name: "Хоппер-дозатор 19-923",
+  type: "Хоппер",
+  capacity: "71 тонна",
+  year: 2020,
+  price: "3 700 000 ₽",
+  status: "available",
+  features: ["Автоматическая разгрузка", "Защита от пыли", "Усиленные люки"],
+  image: "/tank-wagon.jpg"
+}, {
+  id: 6,
+  name: "Рефрижератор ZB-5",
+  type: "Рефрижератор",
+  capacity: "40 тонн",
+  year: 2021,
+  price: "6 200 000 ₽",
+  status: "available",
+  features: ["Температурный режим -25°C до +15°C", "Автономная работа", "GPS мониторинг"],
+  image: "/boxcar-wagon.jpg"
+}, {
+  id: 7,
+  name: "Полувагон 12-196",
+  type: "Полувагон",
+  capacity: "69 тонн",
+  year: 2018,
+  price: "2 800 000 ₽",
+  status: "sold",
+  features: ["Капитальный ремонт 2023", "Новые тележки", "Гарантия 3 года"],
+  image: "/gondola-wagon.jpg"
+}, {
+  id: 8,
+  name: "Цистерна для битума 15-1547",
+  type: "Цистерна",
+  capacity: "60 тонн",
+  year: 2020,
+  price: "5 100 000 ₽",
+  status: "available",
+  features: ["Паровая рубашка", "Теплоизоляция", "Специальное покрытие"],
+  image: "/tank-wagon.jpg"
+}];
 export default function Catalog() {
   const [typeFilter, setTypeFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
-
   const filteredWagons = wagons.filter(wagon => {
     const matchesType = typeFilter === "all" || wagon.type === typeFilter;
     const matchesStatus = statusFilter === "all" || wagon.status === statusFilter;
-    const matchesSearch = wagon.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          wagon.type.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = wagon.name.toLowerCase().includes(searchQuery.toLowerCase()) || wagon.type.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesType && matchesStatus && matchesSearch;
   });
-
   const getStatusBadge = (status: Wagon["status"]) => {
     switch (status) {
       case "available":
@@ -134,9 +119,7 @@ export default function Catalog() {
         return <Badge variant="secondary">Продан</Badge>;
     }
   };
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       
       {/* Hero Section */}
@@ -155,12 +138,7 @@ export default function Catalog() {
       <section className="py-8 bg-muted/50 border-b">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4">
-            <Input
-              placeholder="Поиск по названию или типу..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="md:w-96 bg-background"
-            />
+            <Input placeholder="Поиск по названию или типу..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="md:w-96 bg-background" />
             <Select value={typeFilter} onValueChange={setTypeFilter}>
               <SelectTrigger className="md:w-48 bg-background">
                 <SelectValue placeholder="Тип вагона" />
@@ -194,14 +172,9 @@ export default function Catalog() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredWagons.map((wagon) => (
-              <Card key={wagon.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+            {filteredWagons.map(wagon => <Card key={wagon.id} className="overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="aspect-video bg-muted relative">
-                  <img 
-                    src={wagon.image} 
-                    alt={wagon.name}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={wagon.image} alt={wagon.name} className="w-full h-full object-cover" />
                   <div className="absolute top-2 right-2">
                     {getStatusBadge(wagon.status)}
                   </div>
@@ -219,12 +192,10 @@ export default function Catalog() {
                       <span>Грузоподъемность: {wagon.capacity}</span>
                     </div>
                     <div className="space-y-1">
-                      {wagon.features.slice(0, 2).map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-sm">
+                      {wagon.features.slice(0, 2).map((feature, idx) => <div key={idx} className="flex items-center gap-2 text-sm">
                           <CheckCircle className="h-3 w-3 text-green-500" />
                           <span>{feature}</span>
-                        </div>
-                      ))}
+                        </div>)}
                     </div>
                     <div className="text-2xl font-bold text-primary">
                       {wagon.price}
@@ -232,24 +203,16 @@ export default function Catalog() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button 
-                    className="w-full"
-                    disabled={wagon.status === "sold"}
-                  >
-                    {wagon.status === "sold" ? "Продан" : "Подробнее"}
-                  </Button>
+                  
                 </CardFooter>
-              </Card>
-            ))}
+              </Card>)}
           </div>
           
-          {filteredWagons.length === 0 && (
-            <div className="text-center py-12">
+          {filteredWagons.length === 0 && <div className="text-center py-12">
               <p className="text-xl text-muted-foreground">
                 По вашему запросу ничего не найдено
               </p>
-            </div>
-          )}
+            </div>}
         </div>
       </section>
 
@@ -269,6 +232,5 @@ export default function Catalog() {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 }
