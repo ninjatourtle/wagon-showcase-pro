@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="bg-primary-dark py-12">
@@ -18,19 +20,19 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <Link to="/services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Продажа вагонов
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <Link to="/services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Аренда вагонов
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <Link to="/services" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Ремонт и обслуживание
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -41,19 +43,19 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <Link to="/about" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   О нас
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <Link to="/licenses" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Лицензии
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <Link to="/partners" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Партнеры
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -66,6 +68,11 @@ export default function Footer() {
               <li>+7 (495) 157-83-02</li>
               <li>info@kbslogistic.ru</li>
               <li>115054, г. Москва, Дубининская ул., д. 57, стр. 2</li>
+              <li className="pt-2">
+                <Link to="/contacts" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors underline">
+                  Все контакты →
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -80,12 +87,12 @@ export default function Footer() {
             <p>Генеральный директор: Чепец Петр Петрович</p>
           </div>
           <div className="flex flex-col md:flex-row justify-center items-center space-x-0 md:space-x-6">
-            <a href="#" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
+            <Link to="/privacy" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
               Политика конфиденциальности
-            </a>
-            <a href="#" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
+            </Link>
+            <Link to="/terms" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
               Условия использования
-            </a>
+            </Link>
           </div>
         </div>
       </div>
