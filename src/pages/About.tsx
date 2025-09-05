@@ -6,7 +6,7 @@ import { Award, Users, Shield, Clock, TrendingUp, Globe, Truck, Settings } from 
 
 export default function About() {
   const achievements = [
-    { year: "2010", event: "Основание компании ВагонТрейд" },
+    { year: "2010", event: "Основание компании КБСЛогистик" },
     { year: "2012", event: "Получение лицензии на ремонт вагонов" },
     { year: "2015", event: "Открытие филиала в Санкт-Петербурге" },
     { year: "2018", event: "Запуск собственного ремонтного депо" },
@@ -68,7 +68,7 @@ export default function About() {
       <section className="pt-32 pb-16 bg-gradient-to-b from-primary/10 to-background">
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-bold text-foreground mb-4">
-            О компании ВагонТрейд
+            О компании КБСЛогистик
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl">
             Более 14 лет мы обеспечиваем надежные железнодорожные перевозки по всей России
@@ -86,7 +86,7 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  ВагонТрейд — это современная компания с богатым опытом в области железнодорожных перевозок. 
+                  КБСЛогистик — это современная компания с богатым опытом в области железнодорожных перевозок. 
                   Мы специализируемся на продаже, аренде и обслуживании грузовых вагонов различных типов.
                 </p>
                 <p>

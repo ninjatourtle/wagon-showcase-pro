@@ -42,7 +42,7 @@ export default function Header() {
             <h1 className={`text-2xl font-bold transition-colors ${
               isScrolled || !isHomePage ? "text-primary" : "text-primary-foreground"
             }`}>
-              ВагонТрейд
+              КБСЛогистик
             </h1>
           </Link>
 

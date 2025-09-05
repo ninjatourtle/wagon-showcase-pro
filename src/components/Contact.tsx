@@ -76,8 +76,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">Email</p>
-                  <p className="text-muted-foreground">info@vagontrade.ru</p>
-                  <p className="text-muted-foreground">sales@vagontrade.ru</p>
+                  <p className="text-muted-foreground">info@kbslogistic.ru</p>
+                  <p className="text-muted-foreground">sales@kbslogistic.ru</p>
                 </div>
               </div>
 

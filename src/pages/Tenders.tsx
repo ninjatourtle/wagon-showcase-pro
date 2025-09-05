@@ -113,9 +113,32 @@ export default function Tenders() {
               Тендерные закупки
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              ВагонТрейд проводит все закупки на конкурсной основе через собственную систему электронных торгов
+              КБСЛогистик проводит все закупки на конкурсной основе через собственную систему электронных торгов
             </p>
           </div>
+
+          {/* Procurement Head Contact */}
+          <Card className="mb-12 p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="w-32 h-32 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground text-4xl font-bold">
+                АК
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-2xl font-bold text-foreground mb-2">Александр Константинов</h3>
+                <p className="text-lg text-muted-foreground mb-4">Начальник отдела внутренних закупок</p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                  <a href="tel:+74951578302" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Phone className="h-5 w-5 mr-2" />
+                    +7 (495) 157-83-02, доб. 2771
+                  </a>
+                  <a href="mailto:procurement@kbslogistic.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Mail className="h-5 w-5 mr-2" />
+                    procurement@kbslogistic.ru
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Card>
 
           {/* Info Section */}
           <div className="bg-gradient-primary rounded-2xl p-8 md:p-12 text-primary-foreground mb-12">
@@ -197,7 +220,7 @@ export default function Tenders() {
               <Building className="h-12 w-12 text-primary mx-auto mb-4" />
               <h2 className="text-3xl font-bold mb-2">Стать поставщиком</h2>
               <p className="text-muted-foreground">
-                Заполните форму для включения в базу поставщиков ВагонТрейд
+                Заполните форму для включения в базу поставщиков КБСЛогистик
               </p>
             </div>
 
@@ -359,9 +382,9 @@ export default function Tenders() {
                 <Phone className="h-5 w-5 mr-2" />
                 +7 (495) 157-83-02
               </a>
-              <a href="mailto:tender@vagontrade.ru" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
+              <a href="mailto:tender@kbslogistic.ru" className="flex items-center text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="h-5 w-5 mr-2" />
-                tender@vagontrade.ru
+                tender@kbslogistic.ru
               </a>
             </div>
           </div>
