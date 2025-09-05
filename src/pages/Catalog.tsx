@@ -211,13 +211,7 @@ export default function Catalog() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button 
-                    className="w-full" 
-                    onClick={() => window.location.href = `/wagon/${wagon.id}`}
-                    disabled={wagon.status === "sold"}
-                  >
-                    {wagon.status === "sold" ? "Продан" : "Подробнее"}
-                  </Button>
+                  
                 </CardFooter>
               </Card>)}
           </div>
