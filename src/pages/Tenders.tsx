@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Shield, Users, FileCheck, TrendingUp, CheckCircle, Award, Building, Phone, Mail, FileText } from "lucide-react";
+import konstantinovPhoto from "@/assets/konstantinov.jpg";
 import { useToast } from "@/hooks/use-toast";
 
 export default function Tenders() {
@@ -162,9 +163,11 @@ export default function Tenders() {
           {/* Procurement Head Contact */}
           <Card className="mb-16 p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-32 h-32 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground text-4xl font-bold">
-                АК
-              </div>
+              <img 
+                src={konstantinovPhoto} 
+                alt="Александр Константинов" 
+                className="w-32 h-32 rounded-full object-cover shadow-strong"
+              />
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-2xl font-bold text-foreground mb-2">Александр Константинов</h3>
                 <p className="text-lg text-muted-foreground mb-4">Начальник отдела внутренних закупок</p>
@@ -173,9 +176,9 @@ export default function Tenders() {
                     <Phone className="h-5 w-5 mr-2" />
                     +7 (495) 157-83-02, доб. 2771
                   </a>
-                  <a href="mailto:procurement@kbslogistic.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                  <a href="mailto:a.konstantinov@kbslogistic.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
                     <Mail className="h-5 w-5 mr-2" />
-                    procurement@kbslogistic.ru
+                    a.konstantinov@kbslogistic.ru
                   </a>
                 </div>
               </div>
