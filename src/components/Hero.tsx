@@ -1,20 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ChevronRight, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-train.jpg";
-
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -23,18 +16,19 @@ export default function Hero() {
     email: "",
     message: ""
   });
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const navigate = useNavigate();
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Валидация
     if (!formData.name || !formData.phone) {
       toast({
         title: "Ошибка",
         description: "Пожалуйста, заполните обязательные поля",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
@@ -42,23 +36,25 @@ export default function Hero() {
     // Отправка формы
     toast({
       title: "Заявка отправлена!",
-      description: "Мы свяжемся с вами в ближайшее время",
+      description: "Мы свяжемся с вами в ближайшее время"
     });
-    
+
     // Очистка формы и закрытие модального окна
-    setFormData({ name: "", phone: "", email: "", message: "" });
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      message: ""
+    });
     setIsModalOpen(false);
   };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value
     });
   };
-
-  return (
-    <>
+  return <>
       <section className="relative min-h-screen flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -69,27 +65,16 @@ export default function Hero() {
         {/* Content */}
         <div className="container mx-auto px-4 z-10 relative">
           <div className="max-w-3xl animate-fadeInUp">
-            <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6">
-              КБСЛогистик
-            </h1>
+            <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6">КБС-Логистик</h1>
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
               Надежный поставщик железнодорожных вагонов всех типов. Более 14 лет на рынке грузовых перевозок России
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-lg shadow-strong transition-all hover:scale-105"
-                onClick={() => setIsModalOpen(true)}
-              >
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-lg shadow-strong transition-all hover:scale-105" onClick={() => setIsModalOpen(true)}>
                 <Phone className="mr-2 h-5 w-5" />
                 Получить консультацию
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="bg-primary-foreground/10 backdrop-blur border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 px-8 py-6 text-lg transition-all"
-                onClick={() => navigate("/catalog")}
-              >
+              <Button size="lg" variant="outline" className="bg-primary-foreground/10 backdrop-blur border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 px-8 py-6 text-lg transition-all" onClick={() => navigate("/catalog")}>
                 Каталог вагонов
                 <ChevronRight className="ml-2 h-5 w-5" />
               </Button>
@@ -117,44 +102,19 @@ export default function Hero() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Имя *</Label>
-              <Input
-                id="name"
-                placeholder="Ваше имя"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
+              <Input id="name" placeholder="Ваше имя" value={formData.name} onChange={handleInputChange} required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">Телефон *</Label>
-              <Input
-                id="phone"
-                type="tel"
-                placeholder="+7 (999) 999-99-99"
-                value={formData.phone}
-                onChange={handleInputChange}
-                required
-              />
+              <Input id="phone" type="tel" placeholder="+7 (999) 999-99-99" value={formData.phone} onChange={handleInputChange} required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="example@mail.ru"
-                value={formData.email}
-                onChange={handleInputChange}
-              />
+              <Input id="email" type="email" placeholder="example@mail.ru" value={formData.email} onChange={handleInputChange} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="message">Сообщение</Label>
-              <Textarea
-                id="message"
-                placeholder="Опишите ваш вопрос или потребность"
-                className="min-h-[100px]"
-                value={formData.message}
-                onChange={handleInputChange}
-              />
+              <Textarea id="message" placeholder="Опишите ваш вопрос или потребность" className="min-h-[100px]" value={formData.message} onChange={handleInputChange} />
             </div>
             <Button type="submit" className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold">
               Отправить заявку
@@ -162,6 +122,5 @@ export default function Hero() {
           </form>
         </DialogContent>
       </Dialog>
-    </>
-  );
+    </>;
 }
