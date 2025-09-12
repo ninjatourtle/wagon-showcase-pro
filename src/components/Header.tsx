@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,11 +41,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <h1 className={`text-2xl font-bold transition-colors ${
-              isScrolled || !isHomePage ? "text-primary" : "text-primary-foreground"
-            }`}>
-              КБСЛогистик
-            </h1>
+            <img 
+              src={logo} 
+              alt="КБС-Логистик" 
+              className={`h-12 w-auto transition-all duration-300 ${
+                isScrolled || !isHomePage ? "" : "brightness-0 invert"
+              }`}
+            />
           </Link>
 
           {/* Desktop Navigation */}

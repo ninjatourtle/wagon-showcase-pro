@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { ChevronRight, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-train.jpg";
+import logo from "@/assets/logo.png";
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -65,7 +66,11 @@ export default function Hero() {
         {/* Content */}
         <div className="container mx-auto px-4 z-10 relative">
           <div className="max-w-3xl animate-fadeInUp">
-            <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6">КБС-Логистик</h1>
+            <img 
+              src={logo} 
+              alt="КБС-Логистик" 
+              className="h-20 md:h-24 w-auto mb-6 brightness-0 invert"
+            />
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
               Надежный поставщик железнодорожных вагонов всех типов. Более 14 лет на рынке грузовых перевозок России
             </p>
