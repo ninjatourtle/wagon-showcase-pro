@@ -58,7 +58,7 @@ export default function Header() {
                   key={link.name}
                   href={link.href}
                   className={`font-medium transition-colors hover:text-accent ${
-                    isScrolled || !isHomePage ? "text-foreground" : "text-primary-foreground"
+                    isScrolled || !isHomePage ? "text-primary-foreground" : "text-primary-foreground"
                   }`}
                 >
                   {link.name}
@@ -70,7 +70,7 @@ export default function Header() {
                   className={`font-medium transition-colors hover:text-accent ${
                     location.pathname === link.href ? "text-accent" : ""
                   } ${
-                    isScrolled || !isHomePage ? "text-foreground" : "text-primary-foreground"
+                    isScrolled || !isHomePage ? "text-primary-foreground" : "text-primary-foreground"
                   }`}
                 >
                   {link.name}
@@ -93,7 +93,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             className={`md:hidden p-2 transition-colors ${
-              isScrolled || !isHomePage ? "text-foreground" : "text-primary-foreground"
+              isScrolled || !isHomePage ? "text-primary-foreground" : "text-primary-foreground"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
