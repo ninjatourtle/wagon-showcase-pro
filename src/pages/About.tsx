@@ -7,77 +7,71 @@ import teamPetrov from "@/assets/team-petrov.jpg";
 import teamIvanova from "@/assets/team-ivanova.jpg";
 import teamKozlov from "@/assets/team-kozlov.jpg";
 import teamSmirnova from "@/assets/team-smirnova.jpg";
-
 export default function About() {
-  const achievements = [
-    { year: "2010", event: "Основание компании КБСЛогистик" },
-    { year: "2012", event: "Получение лицензии на ремонт вагонов" },
-    { year: "2015", event: "Открытие филиала в Санкт-Петербурге" },
-    { year: "2018", event: "Запуск собственного ремонтного депо" },
-    { year: "2020", event: "Расширение парка до 5000+ вагонов" },
-    { year: "2023", event: "Сертификация ISO 9001:2015" },
-  ];
-
-  const values = [
-    {
-      icon: Shield,
-      title: "Надежность",
-      description: "Гарантируем качество и безопасность каждого вагона"
-    },
-    {
-      icon: Users,
-      title: "Партнерство",
-      description: "Строим долгосрочные отношения с клиентами"
-    },
-    {
-      icon: TrendingUp,
-      title: "Инновации",
-      description: "Внедряем современные технологии в работу"
-    },
-    {
-      icon: Globe,
-      title: "Масштаб",
-      description: "Работаем по всей территории России и СНГ"
-    }
-  ];
-
-  const team = [
-    {
-      name: "Александр Петров",
-      position: "Генеральный директор",
-      experience: "20 лет в отрасли",
-      photo: teamPetrov
-    },
-    {
-      name: "Мария Иванова",
-      position: "Коммерческий директор",
-      experience: "15 лет в логистике",
-      photo: teamIvanova
-    },
-    {
-      name: "Сергей Козлов",
-      position: "Технический директор",
-      experience: "18 лет в железнодорожной отрасли",
-      photo: teamKozlov
-    },
-    {
-      name: "Елена Смирнова",
-      position: "Финансовый директор",
-      experience: "12 лет в финансах",
-      photo: teamSmirnova
-    }
-  ];
-
-  return (
-    <div className="min-h-screen">
+  const achievements = [{
+    year: "2010",
+    event: "Основание компании КБСЛогистик"
+  }, {
+    year: "2012",
+    event: "Получение лицензии на ремонт вагонов"
+  }, {
+    year: "2015",
+    event: "Открытие филиала в Санкт-Петербурге"
+  }, {
+    year: "2018",
+    event: "Запуск собственного ремонтного депо"
+  }, {
+    year: "2020",
+    event: "Расширение парка до 5000+ вагонов"
+  }, {
+    year: "2023",
+    event: "Сертификация ISO 9001:2015"
+  }];
+  const values = [{
+    icon: Shield,
+    title: "Надежность",
+    description: "Гарантируем качество и безопасность каждого вагона"
+  }, {
+    icon: Users,
+    title: "Партнерство",
+    description: "Строим долгосрочные отношения с клиентами"
+  }, {
+    icon: TrendingUp,
+    title: "Инновации",
+    description: "Внедряем современные технологии в работу"
+  }, {
+    icon: Globe,
+    title: "Масштаб",
+    description: "Работаем по всей территории России и СНГ"
+  }];
+  const team = [{
+    name: "Александр Петров",
+    position: "Генеральный директор",
+    experience: "20 лет в отрасли",
+    photo: teamPetrov
+  }, {
+    name: "Мария Иванова",
+    position: "Коммерческий директор",
+    experience: "15 лет в логистике",
+    photo: teamIvanova
+  }, {
+    name: "Сергей Козлов",
+    position: "Технический директор",
+    experience: "18 лет в железнодорожной отрасли",
+    photo: teamKozlov
+  }, {
+    name: "Елена Смирнова",
+    position: "Финансовый директор",
+    experience: "12 лет в финансах",
+    photo: teamSmirnova
+  }];
+  return <div className="min-h-screen">
       <Header />
       
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-primary/10 to-background">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold text-foreground mb-4">
-            О компании КБСЛогистик
-          </h1>
+          <h1 className="text-5xl font-bold text-foreground mb-4">О компании КБС-Логистик</h1>
           <p className="text-xl text-muted-foreground max-w-3xl">
             Более 14 лет мы обеспечиваем надежные железнодорожные перевозки по всей России
           </p>
@@ -149,8 +143,7 @@ export default function About() {
             Наши ценности
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <Card key={index} className="text-center">
+            {values.map((value, index) => <Card key={index} className="text-center">
                 <CardContent className="p-6">
                   <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <value.icon className="h-8 w-8 text-primary-foreground" />
@@ -162,8 +155,7 @@ export default function About() {
                     {value.description}
                   </p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -175,8 +167,7 @@ export default function About() {
             История развития
           </h2>
           <div className="max-w-4xl mx-auto">
-            {achievements.map((item, index) => (
-              <div key={index} className="flex gap-8 mb-8 last:mb-0">
+            {achievements.map((item, index) => <div key={index} className="flex gap-8 mb-8 last:mb-0">
                 <div className="flex-shrink-0">
                   <div className="w-24 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
                     <span className="text-primary-foreground font-bold">{item.year}</span>
@@ -186,8 +177,7 @@ export default function About() {
                   <div className="absolute left-[-9px] top-0 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
                   <p className="text-foreground">{item.event}</p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -199,15 +189,10 @@ export default function About() {
             Наша команда
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {team.map((member, index) => (
-              <Card key={index}>
+            {team.map((member, index) => <Card key={index}>
                 <CardContent className="p-6 text-center">
                   <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden">
-                    <img 
-                      src={member.photo} 
-                      alt={member.name} 
-                      className="w-full h-full object-cover"
-                    />
+                    <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-1">
                     {member.name}
@@ -219,8 +204,7 @@ export default function About() {
                     {member.experience}
                   </p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -285,6 +269,5 @@ export default function About() {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 }
