@@ -215,10 +215,10 @@ export default function Tenders() {
               <div className="flex flex-col items-center text-center">
                 <img 
                   src={yakovlevaPhoto} 
-                  alt="Анна Яковлева" 
+                  alt="Полина Селиванова" 
                   className="w-24 h-24 rounded-full object-cover shadow-strong mb-4"
                 />
-                <h3 className="text-xl font-bold text-foreground mb-2">Анна Яковлева</h3>
+                <h3 className="text-xl font-bold text-foreground mb-2">Полина Селиванова</h3>
                 <p className="text-muted-foreground mb-4">Специалист отдела закупок</p>
                 <div className="flex flex-col gap-3">
                   <a href="tel:+74951578302" className="flex items-center text-primary hover:text-primary/80 transition-colors">
