@@ -9,9 +9,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Shield, Users, FileCheck, TrendingUp, CheckCircle, Award, Building, Phone, Mail, FileText } from "lucide-react";
-import konstantinovPhoto from "@/assets/konstantinov.jpg";
-import dovlatovPhoto from "@/assets/dovlatov.jpg";
-import yakovlevaPhoto from "@/assets/yakovleva.jpg";
 import { useToast } from "@/hooks/use-toast";
 export default function Tenders() {
   const {
@@ -141,7 +138,6 @@ export default function Tenders() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
               <div className="flex flex-col items-center text-center">
-                <img src={dovlatovPhoto} alt="Николай Довлатов" className="w-24 h-24 rounded-full object-cover shadow-strong mb-4" />
                 <h3 className="text-xl font-bold text-foreground mb-2">Николай Довлатов</h3>
                 <p className="text-muted-foreground mb-4">Специалист отдела закупок</p>
                 <div className="flex flex-col gap-3">
@@ -159,7 +155,6 @@ export default function Tenders() {
 
             <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
               <div className="flex flex-col items-center text-center">
-                <img src={yakovlevaPhoto} alt="Полина Селиванова" className="w-24 h-24 rounded-full object-cover shadow-strong mb-4" />
                 <h3 className="text-xl font-bold text-foreground mb-2">Полина Селиванова</h3>
                 <p className="text-muted-foreground mb-4">Специалист отдела закупок</p>
                 <div className="flex flex-col gap-3">
