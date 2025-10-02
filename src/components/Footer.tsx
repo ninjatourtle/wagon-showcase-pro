@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
+
 export default function Footer() {
   return <footer className="bg-primary-dark py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-2xl font-bold text-primary-foreground mb-4">КБС-Логистик</h3>
+            <img src={logo} alt="КБС-Логистик" className="h-12 mb-4" />
             <p className="text-primary-foreground/80">
               Ваш надежный партнер в сфере железнодорожных перевозок
             </p>
