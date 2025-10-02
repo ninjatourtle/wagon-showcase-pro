@@ -13,9 +13,10 @@ import konstantinovPhoto from "@/assets/konstantinov.jpg";
 import dovlatovPhoto from "@/assets/dovlatov.jpg";
 import yakovlevaPhoto from "@/assets/yakovleva.jpg";
 import { useToast } from "@/hooks/use-toast";
-
 export default function Tenders() {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formData, setFormData] = useState({
     companyName: "",
     inn: "",
@@ -29,10 +30,8 @@ export default function Tenders() {
     hasCertificates: false,
     agreeTerms: false
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!formData.agreeTerms) {
       toast({
         title: "Ошибка",
@@ -41,10 +40,9 @@ export default function Tenders() {
       });
       return;
     }
-
     toast({
       title: "Заявка отправлена",
-      description: "Мы свяжемся с вами в течение 3 рабочих дней",
+      description: "Мы свяжемся с вами в течение 3 рабочих дней"
     });
 
     // Reset form
@@ -62,50 +60,26 @@ export default function Tenders() {
       agreeTerms: false
     });
   };
-
-  const principles = [
-    {
-      icon: <Shield className="h-8 w-8 text-primary" />,
-      title: "Прозрачность",
-      description: "Все закупки проводятся на конкурсной основе с публикацией полной документации"
-    },
-    {
-      icon: <Users className="h-8 w-8 text-primary" />,
-      title: "Равные возможности",
-      description: "Каждый поставщик имеет равные шансы на победу в тендере при соответствии требованиям"
-    },
-    {
-      icon: <FileCheck className="h-8 w-8 text-primary" />,
-      title: "Четкие критерии",
-      description: "Победитель определяется на основе объективных критериев: цена, качество, сроки"
-    },
-    {
-      icon: <TrendingUp className="h-8 w-8 text-primary" />,
-      title: "Долгосрочное партнерство",
-      description: "Мы заинтересованы в надежных партнерах для постоянного сотрудничества"
-    }
-  ];
-
-  const requirements = [
-    "Наличие всех необходимых лицензий и разрешений",
-    "Опыт работы в железнодорожной отрасли не менее 3 лет",
-    "Финансовая устойчивость и отсутствие задолженностей",
-    "Наличие производственных мощностей или складских помещений",
-    "Сертификаты качества на продукцию",
-    "Готовность к прохождению аудита"
-  ];
-
-  const categories = [
-    "Поставка вагонов и платформ",
-    "Запасные части и комплектующие",
-    "Ремонт и модернизация",
-    "Лизинг подвижного состава",
-    "Логистические услуги",
-    "Техническое обслуживание"
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const principles = [{
+    icon: <Shield className="h-8 w-8 text-primary" />,
+    title: "Прозрачность",
+    description: "Все закупки проводятся на конкурсной основе с публикацией полной документации"
+  }, {
+    icon: <Users className="h-8 w-8 text-primary" />,
+    title: "Равные возможности",
+    description: "Каждый поставщик имеет равные шансы на победу в тендере при соответствии требованиям"
+  }, {
+    icon: <FileCheck className="h-8 w-8 text-primary" />,
+    title: "Четкие критерии",
+    description: "Победитель определяется на основе объективных критериев: цена, качество, сроки"
+  }, {
+    icon: <TrendingUp className="h-8 w-8 text-primary" />,
+    title: "Долгосрочное партнерство",
+    description: "Мы заинтересованы в надежных партнерах для постоянного сотрудничества"
+  }];
+  const requirements = ["Наличие всех необходимых лицензий и разрешений", "Опыт работы в железнодорожной отрасли не менее 3 лет", "Финансовая устойчивость и отсутствие задолженностей", "Наличие производственных мощностей или складских помещений", "Сертификаты качества на продукцию", "Готовность к прохождению аудита"];
+  const categories = ["Поставка вагонов и платформ", "Запасные части и комплектующие", "Ремонт и модернизация", "Лизинг подвижного состава", "Логистические услуги", "Техническое обслуживание"];
+  return <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-32 pb-20">
@@ -152,50 +126,22 @@ export default function Tenders() {
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-8">Принципы нашей работы</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {principles.map((principle, index) => (
-                <Card key={index} className="p-6 text-center hover:shadow-strong transition-all duration-300">
+              {principles.map((principle, index) => <Card key={index} className="p-6 text-center hover:shadow-strong transition-all duration-300">
                   <div className="flex justify-center mb-4">{principle.icon}</div>
                   <h3 className="text-lg font-semibold mb-2">{principle.title}</h3>
                   <p className="text-sm text-muted-foreground">{principle.description}</p>
-                </Card>
-              ))}
+                </Card>)}
             </div>
           </div>
 
           {/* Procurement Head Contact */}
-          <Card className="mb-8 p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <img 
-                src={konstantinovPhoto} 
-                alt="Александр Константинов" 
-                className="w-32 h-32 rounded-full object-cover shadow-strong"
-              />
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Александр Константинов</h3>
-                <p className="text-lg text-muted-foreground mb-4">Начальник отдела внутренних закупок</p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                  <a href="tel:+74951578302" className="flex items-center text-primary hover:text-primary/80 transition-colors">
-                    <Phone className="h-5 w-5 mr-2" />
-                    +7 (495) 157-83-02, доб. 2771
-                  </a>
-                  <a href="mailto:a.konstantinov@kbslogistic.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
-                    <Mail className="h-5 w-5 mr-2" />
-                    a.konstantinov@kbslogistic.ru
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Card>
+          
 
           {/* Additional Procurement Team Members */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
               <div className="flex flex-col items-center text-center">
-                <img 
-                  src={dovlatovPhoto} 
-                  alt="Николай Довлатов" 
-                  className="w-24 h-24 rounded-full object-cover shadow-strong mb-4"
-                />
+                <img src={dovlatovPhoto} alt="Николай Довлатов" className="w-24 h-24 rounded-full object-cover shadow-strong mb-4" />
                 <h3 className="text-xl font-bold text-foreground mb-2">Николай Довлатов</h3>
                 <p className="text-muted-foreground mb-4">Специалист отдела закупок</p>
                 <div className="flex flex-col gap-3">
@@ -213,11 +159,7 @@ export default function Tenders() {
 
             <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
               <div className="flex flex-col items-center text-center">
-                <img 
-                  src={yakovlevaPhoto} 
-                  alt="Полина Селиванова" 
-                  className="w-24 h-24 rounded-full object-cover shadow-strong mb-4"
-                />
+                <img src={yakovlevaPhoto} alt="Полина Селиванова" className="w-24 h-24 rounded-full object-cover shadow-strong mb-4" />
                 <h3 className="text-xl font-bold text-foreground mb-2">Полина Селиванова</h3>
                 <p className="text-muted-foreground mb-4">Специалист отдела закупок</p>
                 <div className="flex flex-col gap-3">
@@ -242,12 +184,10 @@ export default function Tenders() {
                 Для участия в наших тендерах поставщик должен соответствовать следующим требованиям:
               </p>
               <ul className="space-y-3">
-                {requirements.map((req, index) => (
-                  <li key={index} className="flex items-start">
+                {requirements.map((req, index) => <li key={index} className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-primary mt-0.5 mr-3 flex-shrink-0" />
                     <span className="text-foreground">{req}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
 
@@ -257,11 +197,9 @@ export default function Tenders() {
                 Мы проводим тендеры по следующим направлениям:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {categories.map((category, index) => (
-                  <Card key={index} className="p-4 border-l-4 border-l-primary">
+                {categories.map((category, index) => <Card key={index} className="p-4 border-l-4 border-l-primary">
                     <p className="font-medium">{category}</p>
-                  </Card>
-                ))}
+                  </Card>)}
               </div>
             </div>
           </div>
@@ -280,79 +218,65 @@ export default function Tenders() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <Label htmlFor="companyName">Название организации *</Label>
-                  <Input
-                    id="companyName"
-                    required
-                    value={formData.companyName}
-                    onChange={(e) => setFormData({...formData, companyName: e.target.value})}
-                    placeholder="ООО 'Название'"
-                  />
+                  <Input id="companyName" required value={formData.companyName} onChange={e => setFormData({
+                  ...formData,
+                  companyName: e.target.value
+                })} placeholder="ООО 'Название'" />
                 </div>
 
                 <div>
                   <Label htmlFor="inn">ИНН *</Label>
-                  <Input
-                    id="inn"
-                    required
-                    value={formData.inn}
-                    onChange={(e) => setFormData({...formData, inn: e.target.value})}
-                    placeholder="1234567890"
-                    pattern="[0-9]{10,12}"
-                  />
+                  <Input id="inn" required value={formData.inn} onChange={e => setFormData({
+                  ...formData,
+                  inn: e.target.value
+                })} placeholder="1234567890" pattern="[0-9]{10,12}" />
                 </div>
 
                 <div>
                   <Label htmlFor="contactPerson">Контактное лицо *</Label>
-                  <Input
-                    id="contactPerson"
-                    required
-                    value={formData.contactPerson}
-                    onChange={(e) => setFormData({...formData, contactPerson: e.target.value})}
-                    placeholder="Иванов Иван Иванович"
-                  />
+                  <Input id="contactPerson" required value={formData.contactPerson} onChange={e => setFormData({
+                  ...formData,
+                  contactPerson: e.target.value
+                })} placeholder="Иванов Иван Иванович" />
                 </div>
 
                 <div>
                   <Label htmlFor="phone">Телефон *</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    placeholder="+7 (___) ___-__-__"
-                  />
+                  <Input id="phone" type="tel" required value={formData.phone} onChange={e => setFormData({
+                  ...formData,
+                  phone: e.target.value
+                })} placeholder="+7 (___) ___-__-__" />
                 </div>
 
                 <div>
                   <Label htmlFor="email">Email *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    placeholder="info@company.ru"
-                  />
+                  <Input id="email" type="email" required value={formData.email} onChange={e => setFormData({
+                  ...formData,
+                  email: e.target.value
+                })} placeholder="info@company.ru" />
                 </div>
 
                 <div>
                   <Label htmlFor="category">Категория услуг *</Label>
-                  <Select value={formData.category} onValueChange={(value) => setFormData({...formData, category: value})}>
+                  <Select value={formData.category} onValueChange={value => setFormData({
+                  ...formData,
+                  category: value
+                })}>
                     <SelectTrigger id="category">
                       <SelectValue placeholder="Выберите категорию" />
                     </SelectTrigger>
                     <SelectContent>
-                      {categories.map((cat) => (
-                        <SelectItem key={cat} value={cat}>{cat}</SelectItem>
-                      ))}
+                      {categories.map(cat => <SelectItem key={cat} value={cat}>{cat}</SelectItem>)}
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div>
                   <Label htmlFor="experience">Опыт работы в отрасли *</Label>
-                  <Select value={formData.experience} onValueChange={(value) => setFormData({...formData, experience: value})}>
+                  <Select value={formData.experience} onValueChange={value => setFormData({
+                  ...formData,
+                  experience: value
+                })}>
                     <SelectTrigger id="experience">
                       <SelectValue placeholder="Выберите опыт" />
                     </SelectTrigger>
@@ -369,44 +293,38 @@ export default function Tenders() {
 
               <div>
                 <Label htmlFor="description">Описание компании и услуг</Label>
-                <Textarea
-                  id="description"
-                  value={formData.description}
-                  onChange={(e) => setFormData({...formData, description: e.target.value})}
-                  placeholder="Расскажите о вашей компании, опыте работы, основных клиентах..."
-                  rows={4}
-                />
+                <Textarea id="description" value={formData.description} onChange={e => setFormData({
+                ...formData,
+                description: e.target.value
+              })} placeholder="Расскажите о вашей компании, опыте работы, основных клиентах..." rows={4} />
               </div>
 
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="hasLicense"
-                    checked={formData.hasLicense}
-                    onCheckedChange={(checked) => setFormData({...formData, hasLicense: checked as boolean})}
-                  />
+                  <Checkbox id="hasLicense" checked={formData.hasLicense} onCheckedChange={checked => setFormData({
+                  ...formData,
+                  hasLicense: checked as boolean
+                })} />
                   <Label htmlFor="hasLicense" className="cursor-pointer">
                     Имеются все необходимые лицензии и разрешения
                   </Label>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="hasCertificates"
-                    checked={formData.hasCertificates}
-                    onCheckedChange={(checked) => setFormData({...formData, hasCertificates: checked as boolean})}
-                  />
+                  <Checkbox id="hasCertificates" checked={formData.hasCertificates} onCheckedChange={checked => setFormData({
+                  ...formData,
+                  hasCertificates: checked as boolean
+                })} />
                   <Label htmlFor="hasCertificates" className="cursor-pointer">
                     Имеются сертификаты качества на продукцию/услуги
                   </Label>
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="agreeTerms"
-                    checked={formData.agreeTerms}
-                    onCheckedChange={(checked) => setFormData({...formData, agreeTerms: checked as boolean})}
-                  />
+                  <Checkbox id="agreeTerms" checked={formData.agreeTerms} onCheckedChange={checked => setFormData({
+                  ...formData,
+                  agreeTerms: checked as boolean
+                })} />
                   <Label htmlFor="agreeTerms" className="cursor-pointer">
                     Согласен с условиями обработки персональных данных *
                   </Label>
@@ -444,6 +362,5 @@ export default function Tenders() {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 }
