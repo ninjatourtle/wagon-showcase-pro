@@ -167,9 +167,9 @@ export default function Tenders() {
                     <Phone className="h-4 w-4 mr-2" />
                     +7 (495) 157-83-02, доб. 348
                   </a>
-                  <a href="mailto:p.selivanova@kbslogistic.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                  <a href="mailto:p.selivanova@kbstender.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
                     <Mail className="h-4 w-4 mr-2" />
-                    p.selivanova@kbslogistic.ru
+                    p.selivanova@kbstender.ru
                   </a>
                 </div>
               </div>
