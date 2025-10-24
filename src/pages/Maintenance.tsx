@@ -13,6 +13,7 @@ const Maintenance = () => {
             src={logo} 
             alt="КБС-Логистик" 
             className="h-20 w-auto"
+            style={{ filter: 'brightness(0) saturate(100%) invert(28%) sepia(98%) saturate(1897%) hue-rotate(203deg) brightness(95%) contrast(101%)' }}
           />
         </div>
 
