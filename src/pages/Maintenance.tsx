@@ -1,4 +1,4 @@
-import { Wrench, Clock, Mail, Phone } from "lucide-react";
+import { Wrench, Clock, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
@@ -56,23 +56,13 @@ const Maintenance = () => {
             Свяжитесь с нами
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-4">
-            <a 
-              href="tel:+74951578302"
-              className="flex items-center justify-center gap-2 p-4 rounded-md bg-primary/5 hover:bg-primary/10 transition-colors border border-primary/20"
-            >
-              <Phone className="h-5 w-5 text-primary" />
-              <span className="font-medium text-foreground">+7 (495) 157-83-02</span>
-            </a>
-            
-            <a 
-              href="mailto:info@kbslogistic.ru"
-              className="flex items-center justify-center gap-2 p-4 rounded-md bg-primary/5 hover:bg-primary/10 transition-colors border border-primary/20"
-            >
-              <Mail className="h-5 w-5 text-primary" />
-              <span className="font-medium text-foreground">info@kbslogistic.ru</span>
-            </a>
-          </div>
+          <a 
+            href="mailto:info@kbslogistic.ru"
+            className="flex items-center justify-center gap-2 p-4 rounded-md bg-primary/5 hover:bg-primary/10 transition-colors border border-primary/20"
+          >
+            <Mail className="h-5 w-5 text-primary" />
+            <span className="font-medium text-foreground">info@kbslogistic.ru</span>
+          </a>
         </div>
 
         {/* Back to Home Button */}
