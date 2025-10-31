@@ -65,7 +65,6 @@ export default function Footer() {
             <ul className="space-y-2 text-primary-foreground/80">
               <li>+7 (495) 157-83-02</li>
               <li>info@kbslogistic.ru</li>
-              <li>115054, г. Москва, Дубининская ул., д. 57, стр. 2</li>
               <li className="pt-2">
                 <Link to="/contacts" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors underline">
                   Все контакты →
@@ -78,11 +77,6 @@ export default function Footer() {
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="text-center text-primary-foreground/60 text-sm mb-4">
             <p>© 2025 КБС Логистик. Все права защищены.</p>
-            <p className="mt-2">
-              ООО «КБС-ЛОГИСТИК», ИНН: 9725091562, ОГРН: 1227700468192, КПП: 772501001
-            </p>
-            <p>Адрес: 115054, г. Москва, Дубининская ул., д. 57, стр. 2, помещ. 12Т</p>
-            <p>Генеральный директор: Чепец Петр Петрович</p>
           </div>
           <div className="flex flex-col md:flex-row justify-center items-center space-x-0 md:space-x-6">
             <Link to="/privacy" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
