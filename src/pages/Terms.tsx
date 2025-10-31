@@ -1,9 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
 export default function Terms() {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Header />
       <main>
         {/* Hero Section */}
@@ -154,12 +152,7 @@ export default function Terms() {
                   <p className="text-muted-foreground">
                     По всем вопросам, связанным с Условиями использования, вы можете связаться с нами:
                   </p>
-                  <div className="mt-4 p-4 bg-muted rounded-lg">
-                    <p className="text-foreground font-semibold">ООО «КБС-ЛОГИСТИК»</p>
-                    <p className="text-muted-foreground">Email: info@kbslogistic.ru</p>
-                    <p className="text-muted-foreground">Телефон: +7 (495) 157-83-02</p>
-                    <p className="text-muted-foreground">Адрес: 115054, г. Москва, Дубининская ул., д. 57, стр. 2, помещ. 12Т</p>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -167,6 +160,5 @@ export default function Terms() {
         </section>
       </main>
       <Footer />
-    </div>
-  );
+    </div>;
 }
