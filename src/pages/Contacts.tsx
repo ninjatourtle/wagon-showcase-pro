@@ -49,7 +49,7 @@ export default function Contacts() {
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">Наш офис</h3>
                     <p className="text-muted-foreground">
-                      115054, г. Москва, Дубининская ул., д. 57, стр. 2, помещ. 12Т
+                      г. Москва, Варшавское шоссе, д. 56, стр. 2
                     </p>
                     <p className="text-muted-foreground mt-2">
                       Ближайшее метро: Павелецкая (5 минут пешком)
