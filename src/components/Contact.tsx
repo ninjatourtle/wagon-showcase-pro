@@ -68,7 +68,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">Адрес</p>
-                  <p className="text-muted-foreground">г. Санкт-Петербург, Невский проспект, д. 28</p>
+                  <p className="text-muted-foreground">г. Москва, ул. Тверская, д. 15</p>
                   
                 </div>
               </div>
