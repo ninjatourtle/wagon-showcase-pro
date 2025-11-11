@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 const stats = [
   { value: 5000, suffix: "+", label: "Вагонов в наличии" },
-  { value: 15, suffix: " лет", label: "На рынке" },
   { value: 300, suffix: "+", label: "Довольных клиентов" },
   { value: 24, suffix: "/7", label: "Поддержка" }
 ];
@@ -17,7 +16,7 @@ export default function Statistics() {
   return (
     <section className="py-20 bg-gradient-primary">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {stats.map((stat, index) => (
             <div
               key={index}

@@ -136,14 +136,10 @@ export default function Partners() {
         {/* Statistics */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary mb-2">50+</div>
                 <p className="text-muted-foreground">Активных партнеров</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">15</div>
-                <p className="text-muted-foreground">Лет на рынке</p>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary mb-2">100%</div>

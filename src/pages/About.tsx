@@ -73,7 +73,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <h1 className="text-5xl font-bold text-foreground mb-4">О компании КБС-Логистик</h1>
           <p className="text-xl text-muted-foreground max-w-3xl">
-            Более 14 лет мы обеспечиваем надежные железнодорожные перевозки по всей России
+            Мы обеспечиваем надежные железнодорожные перевозки по всей России
           </p>
         </div>
       </section>
@@ -103,13 +103,7 @@ export default function About() {
                 </Button>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <Card>
-                <CardContent className="p-6">
-                  <div className="text-4xl font-bold text-primary mb-2">14+</div>
-                  <p className="text-muted-foreground">Лет на рынке</p>
-                </CardContent>
-              </Card>
+            <div className="grid grid-cols-3 gap-4">
               <Card>
                 <CardContent className="p-6">
                   <div className="text-4xl font-bold text-primary mb-2">5000+</div>
