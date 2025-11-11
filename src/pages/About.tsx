@@ -8,25 +8,6 @@ import teamIvanova from "@/assets/team-ivanova.jpg";
 import teamKozlov from "@/assets/team-kozlov.jpg";
 import teamSmirnova from "@/assets/team-smirnova.jpg";
 export default function About() {
-  const achievements = [{
-    year: "2010",
-    event: "Основание компании КБСЛогистик"
-  }, {
-    year: "2012",
-    event: "Получение лицензии на ремонт вагонов"
-  }, {
-    year: "2015",
-    event: "Открытие филиала в Санкт-Петербурге"
-  }, {
-    year: "2018",
-    event: "Запуск собственного ремонтного депо"
-  }, {
-    year: "2020",
-    event: "Расширение парка до 5000+ вагонов"
-  }, {
-    year: "2023",
-    event: "Сертификация ISO 9001:2015"
-  }];
   const values = [{
     icon: Shield,
     title: "Надежность",
@@ -147,28 +128,6 @@ export default function About() {
                   </p>
                 </CardContent>
               </Card>)}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-12">
-            История развития
-          </h2>
-          <div className="max-w-4xl mx-auto">
-            {achievements.map((item, index) => <div key={index} className="flex gap-8 mb-8 last:mb-0">
-                <div className="flex-shrink-0">
-                  <div className="w-24 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                    <span className="text-primary-foreground font-bold">{item.year}</span>
-                  </div>
-                </div>
-                <div className="flex-grow pb-8 border-l-2 border-border pl-8 relative">
-                  <div className="absolute left-[-9px] top-0 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
-                  <p className="text-foreground">{item.event}</p>
-                </div>
-              </div>)}
           </div>
         </div>
       </section>
