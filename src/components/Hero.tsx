@@ -72,7 +72,7 @@ export default function Hero() {
               className="h-20 md:h-24 w-auto mb-6 brightness-0 invert"
             />
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Надежный поставщик железнодорожных вагонов всех типов. Более 14 лет на рынке грузовых перевозок России
+              Надежный поставщик железнодорожных вагонов всех типов для грузовых перевозок по всей России
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-lg shadow-strong transition-all hover:scale-105" onClick={() => setIsModalOpen(true)}>
