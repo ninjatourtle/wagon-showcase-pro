@@ -11,7 +11,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Tenders from "./pages/Tenders";
 import Contacts from "./pages/Contacts";
-import Licenses from "./pages/Licenses";
+
 import Partners from "./pages/Partners";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -34,7 +34,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/tenders" element={<Tenders />} />
           <Route path="/contacts" element={<Contacts />} />
-          <Route path="/licenses" element={<Licenses />} />
+          
           <Route path="/partners" element={<Partners />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

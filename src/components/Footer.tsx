@@ -46,11 +46,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/licenses" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Лицензии
-                </Link>
-              </li>
-              <li>
                 <Link to="/partners" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Партнеры
                 </Link>
