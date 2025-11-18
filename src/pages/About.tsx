@@ -159,49 +159,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Certifications */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-12">
-            Лицензии и сертификаты
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <Card>
-              <CardHeader>
-                <Award className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>ISO 9001:2015</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Международный стандарт системы менеджмента качества
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Shield className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Лицензия ФСТ</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Федеральная служба по тарифам на железнодорожные перевозки
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <Settings className="h-12 w-12 text-primary mb-4" />
-                <CardTitle>Сертификат РЖД</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Аккредитация в системе сертификации ОАО "РЖД"
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
