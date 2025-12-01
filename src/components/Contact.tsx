@@ -1,9 +1,55 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+
 export default function Contact() {
-  return <section className="py-20 bg-muted">
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('send-telegram', {
+        body: {
+          formType: 'contact',
+          data: formData
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Сообщение отправлено",
+        description: "Мы свяжемся с вами в ближайшее время",
+      });
+      
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error('Error sending to Telegram:', error);
+      toast({
+        title: "Ошибка",
+        description: "Не удалось отправить сообщение. Попробуйте позже.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <section className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">
@@ -20,15 +66,46 @@ export default function Contact() {
             <h3 className="text-2xl font-semibold text-foreground mb-6">
               Отправить запрос
             </h3>
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input placeholder="Ваше имя" className="bg-background" />
-                <Input placeholder="Телефон" type="tel" className="bg-background" />
+                <Input
+                  placeholder="Ваше имя"
+                  className="bg-background"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                />
+                <Input
+                  placeholder="Телефон"
+                  type="tel"
+                  className="bg-background"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  required
+                />
               </div>
-              <Input placeholder="Email" type="email" className="bg-background" />
-              <Textarea placeholder="Сообщение" className="min-h-[120px] bg-background" />
-              <Button size="lg" className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold">
-                Отправить заявку
+              <Input
+                placeholder="Email"
+                type="email"
+                className="bg-background"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+              />
+              <Textarea
+                placeholder="Сообщение"
+                className="min-h-[120px] bg-background"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                required
+              />
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Отправка..." : "Отправить заявку"}
               </Button>
             </form>
           </div>
@@ -47,7 +124,6 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Телефон</p>
                   <p className="text-muted-foreground">+7 (495) 157-83-02</p>
-                  
                 </div>
               </div>
 
@@ -58,7 +134,6 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Email</p>
                   <p className="text-muted-foreground">info@kbslogistic.ru</p>
-                  
                 </div>
               </div>
 
@@ -69,7 +144,6 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Адрес</p>
                   <p className="text-muted-foreground">г. Москва, Варшавское шоссе, д. 56, стр. 2</p>
-                  
                 </div>
               </div>
 
@@ -87,5 +161,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }

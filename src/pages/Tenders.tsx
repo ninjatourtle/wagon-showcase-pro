@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Shield, Users, FileCheck, TrendingUp, CheckCircle, Award, Building, Phone, Mail, FileText } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 export default function Tenders() {
   const {
     toast
@@ -27,7 +28,7 @@ export default function Tenders() {
     hasCertificates: false,
     agreeTerms: false
   });
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.agreeTerms) {
       toast({
@@ -37,25 +38,44 @@ export default function Tenders() {
       });
       return;
     }
-    toast({
-      title: "Заявка отправлена",
-      description: "Мы свяжемся с вами в течение 3 рабочих дней"
-    });
 
-    // Reset form
-    setFormData({
-      companyName: "",
-      inn: "",
-      contactPerson: "",
-      phone: "",
-      email: "",
-      category: "",
-      experience: "",
-      description: "",
-      hasLicense: false,
-      hasCertificates: false,
-      agreeTerms: false
-    });
+    try {
+      const { data, error } = await supabase.functions.invoke('send-telegram', {
+        body: {
+          formType: 'tender',
+          data: formData
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Заявка отправлена",
+        description: "Мы свяжемся с вами в течение 3 рабочих дней"
+      });
+
+      // Reset form
+      setFormData({
+        companyName: "",
+        inn: "",
+        contactPerson: "",
+        phone: "",
+        email: "",
+        category: "",
+        experience: "",
+        description: "",
+        hasLicense: false,
+        hasCertificates: false,
+        agreeTerms: false
+      });
+    } catch (error) {
+      console.error('Error sending to Telegram:', error);
+      toast({
+        title: "Ошибка",
+        description: "Не удалось отправить заявку. Попробуйте позже.",
+        variant: "destructive",
+      });
+    }
   };
   const principles = [{
     icon: <Shield className="h-8 w-8 text-primary" />,
