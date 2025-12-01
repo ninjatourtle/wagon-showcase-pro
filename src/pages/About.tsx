@@ -1,13 +1,75 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, Users, Shield, Clock, TrendingUp, Globe, Truck, Settings } from "lucide-react";
-import teamPetrov from "@/assets/team-petrov.jpg";
-import teamIvanova from "@/assets/team-ivanova.jpg";
-import teamKozlov from "@/assets/team-kozlov.jpg";
-import teamSmirnova from "@/assets/team-smirnova.jpg";
+import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Users, Shield, TrendingUp, Globe } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+
 export default function About() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: ""
+  });
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.phone) {
+      toast({
+        title: "Ошибка",
+        description: "Пожалуйста, заполните обязательные поля",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-telegram', {
+        body: {
+          formType: 'contact',
+          data: formData
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Заявка отправлена!",
+        description: "Мы свяжемся с вами в ближайшее время"
+      });
+
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        message: ""
+      });
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Error sending to Telegram:', error);
+      toast({
+        title: "Ошибка",
+        description: "Не удалось отправить заявку. Попробуйте позже.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const values = [{
     icon: Shield,
     title: "Надежность",
@@ -25,28 +87,9 @@ export default function About() {
     title: "Масштаб",
     description: "Работаем по всей территории России и СНГ"
   }];
-  const team = [{
-    name: "Александр Петров",
-    position: "Генеральный директор",
-    experience: "20 лет в отрасли",
-    photo: teamPetrov
-  }, {
-    name: "Мария Иванова",
-    position: "Коммерческий директор",
-    experience: "15 лет в логистике",
-    photo: teamIvanova
-  }, {
-    name: "Сергей Козлов",
-    position: "Технический директор",
-    experience: "18 лет в железнодорожной отрасли",
-    photo: teamKozlov
-  }, {
-    name: "Елена Смирнова",
-    position: "Финансовый директор",
-    experience: "12 лет в финансах",
-    photo: teamSmirnova
-  }];
-  return <div className="min-h-screen">
+
+  return (
+    <div className="min-h-screen">
       <Header />
       
       {/* Hero Section */}
@@ -78,7 +121,6 @@ export default function About() {
                   внедряя инновационные решения в области логистики и управления парком.
                 </p>
               </div>
-              
             </div>
             <div className="grid grid-cols-3 gap-4">
               <Card>
@@ -111,7 +153,8 @@ export default function About() {
             Наши ценности
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => <Card key={index} className="text-center">
+            {values.map((value, index) => (
+              <Card key={index} className="text-center">
                 <CardContent className="p-6">
                   <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <value.icon className="h-8 w-8 text-primary-foreground" />
@@ -123,16 +166,11 @@ export default function About() {
                     {value.description}
                   </p>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* Team Section */}
-      <section className="py-16 bg-muted">
-        
-      </section>
-
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
@@ -143,12 +181,75 @@ export default function About() {
           <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
             Свяжитесь с нами сегодня и получите индивидуальное предложение
           </p>
-          <Button size="lg" variant="secondary">
+          <Button size="lg" variant="secondary" onClick={() => setIsModalOpen(true)}>
             Связаться с нами
           </Button>
         </div>
       </section>
 
       <Footer />
-    </div>;
+
+      {/* Contact Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold">Связаться с нами</DialogTitle>
+            <DialogDescription>
+              Оставьте заявку и наши специалисты свяжутся с вами в течение часа
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Имя *</Label>
+              <Input 
+                id="name" 
+                placeholder="Ваше имя" 
+                value={formData.name} 
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
+                required 
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="phone">Телефон *</Label>
+              <Input 
+                id="phone" 
+                type="tel" 
+                placeholder="+7 (999) 999-99-99" 
+                value={formData.phone} 
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })} 
+                required 
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="example@mail.ru" 
+                value={formData.email} 
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })} 
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message">Сообщение</Label>
+              <Textarea 
+                id="message" 
+                placeholder="Опишите ваш вопрос или потребность" 
+                className="min-h-[100px]" 
+                value={formData.message} 
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })} 
+              />
+            </div>
+            <Button 
+              type="submit" 
+              className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Отправка..." : "Отправить заявку"}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
 }

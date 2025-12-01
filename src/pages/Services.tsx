@@ -1,11 +1,76 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { CheckCircle, Truck, Wrench, FileText, Shield, Clock, Users, Package } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function Services() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: ""
+  });
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.phone) {
+      toast({
+        title: "Ошибка",
+        description: "Пожалуйста, заполните обязательные поля",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-telegram', {
+        body: {
+          formType: 'contact',
+          data: formData
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Заявка отправлена!",
+        description: "Мы свяжемся с вами в ближайшее время"
+      });
+
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        message: ""
+      });
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Error sending to Telegram:', error);
+      toast({
+        title: "Ошибка",
+        description: "Не удалось отправить заявку. Попробуйте позже.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const services = {
     sale: {
       title: "Продажа вагонов",
@@ -145,7 +210,11 @@ export default function Services() {
                         </div>
                       ))}
                     </div>
-                    <Button size="lg" className="bg-gradient-primary hover:opacity-90">
+                    <Button 
+                      size="lg" 
+                      className="bg-gradient-primary hover:opacity-90"
+                      onClick={() => setIsModalOpen(true)}
+                    >
                       Получить консультацию
                     </Button>
                   </div>
@@ -245,18 +314,79 @@ export default function Services() {
           <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
             Оставьте заявку и получите персональное предложение в течение часа
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary">
-              Оставить заявку
-            </Button>
-            <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
-              Скачать презентацию
-            </Button>
-          </div>
+          <Button 
+            size="lg" 
+            variant="secondary"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Оставить заявку
+          </Button>
         </div>
       </section>
 
       <Footer />
+
+      {/* Contact Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold">Получить консультацию</DialogTitle>
+            <DialogDescription>
+              Оставьте заявку и наши специалисты свяжутся с вами в течение часа
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Имя *</Label>
+              <Input 
+                id="name" 
+                placeholder="Ваше имя" 
+                value={formData.name} 
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
+                required 
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="phone">Телефон *</Label>
+              <Input 
+                id="phone" 
+                type="tel" 
+                placeholder="+7 (999) 999-99-99" 
+                value={formData.phone} 
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })} 
+                required 
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input 
+                id="email" 
+                type="email" 
+                placeholder="example@mail.ru" 
+                value={formData.email} 
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })} 
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message">Сообщение</Label>
+              <Textarea 
+                id="message" 
+                placeholder="Опишите ваш вопрос или потребность" 
+                className="min-h-[100px]" 
+                value={formData.message} 
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })} 
+              />
+            </div>
+            <Button 
+              type="submit" 
+              className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Отправка..." : "Отправить заявку"}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
