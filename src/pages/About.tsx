@@ -78,11 +78,7 @@ export default function About() {
                   внедряя инновационные решения в области логистики и управления парком.
                 </p>
               </div>
-              <div className="mt-8">
-                <Button size="lg" className="bg-gradient-primary hover:opacity-90">
-                  Скачать презентацию
-                </Button>
-              </div>
+              
             </div>
             <div className="grid grid-cols-3 gap-4">
               <Card>
