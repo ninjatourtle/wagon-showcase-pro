@@ -7,10 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ChevronRight, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import heroImage from "@/assets/hero-train.jpg";
 import logo from "@/assets/logo.png";
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -21,7 +23,7 @@ export default function Hero() {
     toast
   } = useToast();
   const navigate = useNavigate();
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Валидация
@@ -34,20 +36,42 @@ export default function Hero() {
       return;
     }
 
-    // Отправка формы
-    toast({
-      title: "Заявка отправлена!",
-      description: "Мы свяжемся с вами в ближайшее время"
-    });
+    setIsSubmitting(true);
 
-    // Очистка формы и закрытие модального окна
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      message: ""
-    });
-    setIsModalOpen(false);
+    try {
+      const { data, error } = await supabase.functions.invoke('send-telegram', {
+        body: {
+          formType: 'contact',
+          data: formData
+        }
+      });
+
+      if (error) throw error;
+
+      // Отправка формы
+      toast({
+        title: "Заявка отправлена!",
+        description: "Мы свяжемся с вами в ближайшее время"
+      });
+
+      // Очистка формы и закрытие модального окна
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        message: ""
+      });
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Error sending to Telegram:', error);
+      toast({
+        title: "Ошибка",
+        description: "Не удалось отправить заявку. Попробуйте позже.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -121,8 +145,12 @@ export default function Hero() {
               <Label htmlFor="message">Сообщение</Label>
               <Textarea id="message" placeholder="Опишите ваш вопрос или потребность" className="min-h-[100px]" value={formData.message} onChange={handleInputChange} />
             </div>
-            <Button type="submit" className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold">
-              Отправить заявку
+            <Button 
+              type="submit" 
+              className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Отправка..." : "Отправить заявку"}
             </Button>
           </form>
         </DialogContent>
