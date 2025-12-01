@@ -380,16 +380,10 @@ export default function Tenders() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button type="submit" size="lg" className="flex-1">
-                  <FileText className="mr-2 h-5 w-5" />
-                  Отправить заявку
-                </Button>
-                <Button type="button" variant="outline" size="lg" className="flex-1">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Связаться с отделом закупок
-                </Button>
-              </div>
+              <Button type="submit" size="lg" className="w-full">
+                <FileText className="mr-2 h-5 w-5" />
+                Отправить заявку
+              </Button>
             </form>
           </Card>
 
