@@ -169,6 +169,40 @@ export default function Tenders() {
                 </div>
               </div>
             </Card>
+
+            <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+              <div className="flex flex-col items-center text-center">
+                <h3 className="text-xl font-bold text-foreground mb-2">Антон Пантилеев</h3>
+                <p className="text-muted-foreground mb-4">Специалист отдела закупок</p>
+                <div className="flex flex-col gap-3">
+                  <a href="tel:+74951578302" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Phone className="h-4 w-4 mr-2" />
+                    +7 (495) 157-83-02, доб. 364
+                  </a>
+                  <a href="mailto:a.pantileev@kbstender.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Mail className="h-4 w-4 mr-2" />
+                    a.pantileev@kbstender.ru
+                  </a>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+              <div className="flex flex-col items-center text-center">
+                <h3 className="text-xl font-bold text-foreground mb-2">Ольга Громова</h3>
+                <p className="text-muted-foreground mb-4">Специалист отдела закупок</p>
+                <div className="flex flex-col gap-3">
+                  <a href="tel:+74951578302" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Phone className="h-4 w-4 mr-2" />
+                    +7 (495) 157-83-02, доб. 351
+                  </a>
+                  <a href="mailto:o.gromova@kbstender.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Mail className="h-4 w-4 mr-2" />
+                    o.gromova@kbstender.ru
+                  </a>
+                </div>
+              </div>
+            </Card>
           </div>
 
           {/* Requirements Section */}
