@@ -7,6 +7,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { Truck, Calendar, Package, Shield, CheckCircle } from "lucide-react";
 import { useState } from "react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import gondolaWagon from "@/assets/gondola-wagon.jpg";
 import boxcarWagon from "@/assets/boxcar-wagon.jpg";
 import tankWagon from "@/assets/tank-wagon.jpg";
@@ -111,12 +116,54 @@ export default function Catalog() {
   const [typeFilter, setTypeFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: ""
+  });
+  const { toast } = useToast();
   const filteredWagons = wagons.filter(wagon => {
     const matchesType = typeFilter === "all" || wagon.type === typeFilter;
     const matchesStatus = statusFilter === "all" || wagon.status === statusFilter;
     const matchesSearch = wagon.name.toLowerCase().includes(searchQuery.toLowerCase()) || wagon.type.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesType && matchesStatus && matchesSearch;
   });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase.functions.invoke('send-telegram', {
+        body: {
+          formType: 'contact',
+          data: formData
+        }
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Заявка отправлена!",
+        description: "Мы свяжемся с вами в ближайшее время.",
+      });
+
+      setFormData({ name: "", phone: "", email: "", message: "" });
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Ошибка",
+        description: "Не удалось отправить заявку. Попробуйте позже.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const getStatusBadge = (status: Wagon["status"]) => {
     switch (status) {
       case "available":
@@ -233,11 +280,74 @@ export default function Catalog() {
           <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
             Свяжитесь с нами, и мы подберем оптимальное решение под ваши задачи
           </p>
-          <Button size="lg" variant="secondary" className="text-slate-50 bg-red-600 hover:bg-red-500">
+          <Button 
+            size="lg" 
+            variant="secondary" 
+            className="text-slate-50 bg-red-600 hover:bg-red-500"
+            onClick={() => setIsModalOpen(true)}
+          >
             Получить консультацию
           </Button>
         </div>
       </section>
+
+      {/* Contact Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle>Получить консультацию</DialogTitle>
+            <DialogDescription>
+              Заполните форму, и мы свяжемся с вами в ближайшее время
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Имя *</Label>
+              <Input
+                id="name"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Ваше имя"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="phone">Телефон *</Label>
+              <Input
+                id="phone"
+                type="tel"
+                required
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                placeholder="+7 (___) ___-__-__"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="your@email.com"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message">Сообщение</Label>
+              <Textarea
+                id="message"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                placeholder="Расскажите о вашем запросе..."
+                rows={4}
+              />
+            </div>
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? "Отправка..." : "Отправить заявку"}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>;
