@@ -11,7 +11,7 @@ const Maintenance = () => {
         <div className="flex justify-center mb-8">
           <img 
             src={logo} 
-            alt="КБС-Логистик" 
+            alt="КБС" 
             className="h-20 w-auto"
             style={{ filter: 'brightness(0) saturate(100%) invert(28%) sepia(98%) saturate(1897%) hue-rotate(203deg) brightness(95%) contrast(101%)' }}
           />
@@ -80,7 +80,7 @@ const Maintenance = () => {
 
         {/* Footer Note */}
         <p className="text-sm text-muted-foreground pt-8">
-          © {new Date().getFullYear()} КБС-Логистик. Все права защищены.
+          © {new Date().getFullYear()} КБС. Все права защищены.
         </p>
       </div>
     </div>
