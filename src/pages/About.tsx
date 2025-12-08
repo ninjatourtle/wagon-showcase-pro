@@ -95,7 +95,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-primary/10 to-background">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold text-foreground mb-4">О компании КБС-Логистик</h1>
+          <h1 className="text-5xl font-bold text-foreground mb-4">О компании КБС</h1>
           <p className="text-xl text-muted-foreground max-w-3xl">
             Мы обеспечиваем надежные железнодорожные перевозки по всей России
           </p>
@@ -111,7 +111,7 @@ export default function About() {
                 Лидер в сфере железнодорожных перевозок
               </h2>
               <div className="space-y-4 text-muted-foreground">
-                <p>КБС-Логистик — это современная компания с богатым опытом в области железнодорожных перевозок. Мы специализируемся на продаже, аренде и обслуживании грузовых вагонов различных типов.</p>
+                <p>КБС — это современная компания с богатым опытом в области железнодорожных перевозок. Мы специализируемся на продаже, аренде и обслуживании грузовых вагонов различных типов.</p>
                 <p>
                   За годы работы мы зарекомендовали себя как надежный партнер для крупнейших промышленных 
                   предприятий России. Наш парк насчитывает более 5000 единиц подвижного состава.

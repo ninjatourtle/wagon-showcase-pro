@@ -92,7 +92,7 @@ export default function Hero() {
           <div className="max-w-3xl animate-fadeInUp">
             <img 
               src={logo} 
-              alt="КБС-Логистик" 
+              alt="КБС" 
               className="h-20 md:h-24 w-auto mb-6 brightness-0 invert"
             />
             <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 leading-relaxed">

@@ -42,7 +42,7 @@ export default function Header() {
           <Link to="/" className="flex items-center">
             <img 
               src={logo} 
-              alt="КБС-Логистик" 
+              alt="КБС" 
               className={`h-12 w-auto transition-all duration-300 ${
                 isScrolled || !isHomePage ? "" : "brightness-0 invert"
               }`}
