@@ -71,7 +71,7 @@ export default function Footer() {
 
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="text-center text-primary-foreground/60 text-sm mb-4">
-            <p>© 2025 КБС Логистик. Все права защищены.</p>
+            <p>© 2025 КБС. Все права защищены.</p>
           </div>
           <div className="flex flex-col md:flex-row justify-center items-center space-x-0 md:space-x-6">
             <Link to="/privacy" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
