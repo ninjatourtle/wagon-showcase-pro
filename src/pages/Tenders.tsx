@@ -155,7 +155,7 @@ export default function Tenders() {
           
 
           {/* Additional Procurement Team Members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
               <div className="flex flex-col items-center text-center">
                 <h3 className="text-xl font-bold text-foreground mb-2">Николай Довлатов</h3>
@@ -219,6 +219,23 @@ export default function Tenders() {
                   <a href="mailto:o.gromova@kbstender.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
                     <Mail className="h-4 w-4 mr-2" />
                     o.gromova@kbstender.ru
+                  </a>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+              <div className="flex flex-col items-center text-center">
+                <h3 className="text-xl font-bold text-foreground mb-2">Виктор Апенов</h3>
+                <p className="text-muted-foreground mb-4">Специалист отдела закупок</p>
+                <div className="flex flex-col gap-3">
+                  <a href="tel:+74951578302" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Phone className="h-4 w-4 mr-2" />
+                    +7 (495) 157-83-02, доб. 372
+                  </a>
+                  <a href="mailto:v.apenov@kbstender.ru" className="flex items-center text-primary hover:text-primary/80 transition-colors">
+                    <Mail className="h-4 w-4 mr-2" />
+                    v.apenov@kbstender.ru
                   </a>
                 </div>
               </div>
